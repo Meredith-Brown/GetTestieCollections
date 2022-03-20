@@ -1,10 +1,10 @@
-package gettestie.src.main.java.rocks.zipcode;
+package rocks.zipcode;
 
 
 public class Person {
     private String name;
     private int yearOfBirth;
-    private Address address;
+    private gettestie.src.main.java.rocks.zipcode.Address address;
 
     /**
      * Create a person with given name and age.
@@ -46,13 +46,13 @@ public class Person {
      * Set a new address for this person.
      */
     public void setAddress(String street, String town, String postCode) {
-        address = new Address(street, town, postCode);
+        address = new gettestie.src.main.java.rocks.zipcode.Address(street, town, postCode);
     }
 
     /**
      * Return the address of this person.
      */
-    public Address getAddress() {
+    public gettestie.src.main.java.rocks.zipcode.Address getAddress() {
         return address;
     }
 
