@@ -3,13 +3,13 @@ package rocks.zipcode;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.HashMap;
+import java.util.LinkedList;
 
-public class TestHashMap {
+public class TestLinkedList {
 
     @Test
-    public void testHashMap() {
-        HashMap<String, Person> addressBook = new HashMap<>(); // key = name, value = person
+    public void testLinkedList() {
+        LinkedList<Person> addressBook = new LinkedList<>();
 
         Person meredith = new Person("Meredith", 1992);
         meredith.setAddress("724 Ambleside Drive", "Wilmington", "19808");
@@ -20,23 +20,21 @@ public class TestHashMap {
         Person mac = new Person("mac", 1992);
         mac.setAddress("a different address", "a different town with a name", "11111");
 
-        addressBook.put("Meredith Brown", meredith);
-        addressBook.put("Amanda Winkelmayer", amanda);
-        addressBook.put("Paula Cerdas", paula);
+        addressBook.add(mac);
+        addressBook.addFirst(amanda);
+        addressBook.addLast(meredith);
 
         Assert.assertTrue(addressBook.size() == 3);
 
-        Person expected1 = amanda;
-        Person actual1 = addressBook.get("Amanda Winkelmayer");
-        Assert.assertEquals(expected1, actual1);
+        Assert.assertTrue(addressBook.contains(mac));
 
-        Assert.assertTrue(addressBook.containsKey("Paula Cerdas"));
+        addressBook.set(2, paula);
 
-        Assert.assertTrue(addressBook.containsValue(paula));
+        Assert.assertTrue(addressBook.size() == 3);
+        Assert.assertTrue(addressBook.peekLast().equals(paula));
 
-        addressBook.remove("Meredith Brown");
-
-        Assert.assertTrue(addressBook.size() == 2);
+        Assert.assertTrue(addressBook.indexOf(amanda) == 0);
+        Assert.assertTrue(addressBook.indexOf(meredith) == -1);
 
         addressBook.clear();
 
